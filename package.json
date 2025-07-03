@@ -1,0 +1,32 @@
+{
+  "name": "swc-plugin-svg-component",
+  "version": "0.1.0",
+  "author": "João Neto <joaopintoneto@gmail.com>",
+  "license": "MIT",
+  "description": "SWC plugin for svg react component",
+  "keywords": [
+    "swc",
+    "svg",
+    "react",
+    "turbopack",
+    "next.js"
+  ],
+  "main": "./dist/swc_plugin_svg_component.wasm",
+  "files": [
+    "./dist/swc_plugin_svg_component.wasm",
+    "./turbopack.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 20.11"
+  },
+  "scripts": {
+    "build": "cargo build --release --target wasm32-unknown-unknown && npm run dist",
+    "dist": "node ./scripts/dist.js"
+  },
+  "dependencies": {
+    "@swc/core": "^1.12.9"
+  }
+}
