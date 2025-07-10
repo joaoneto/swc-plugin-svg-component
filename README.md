@@ -48,6 +48,32 @@ Para compilar, rode o swc cli incluindo a extensão .svg:
 swc src -d dist --extensions .ts,.js,.tsx,.jsx,.svg
 ```
 
+### Build com vite
+No seu `vite.config.ts`, adicione este plugin:
+
+```typescript
+import { resolve } from 'node:path';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import dts from 'vite-plugin-dts';
+import svgComponent from 'swc-plugin-svg-component/vite';
+
+export default defineConfig({
+  // ... outras configurações
+  plugins: [
+    svgComponent(),
+    react(),
+    // ... outros plugins para vite
+  ],
+});
+```
+
+Para compilar, rode a linha de comando que execute `vite build`, exemplo:
+
+```bash
+npm run build
+```
+
 ### Build com Next.js 15+
 No seu `next.cofig.ts`, adicione o loader para turbopack:
 
@@ -61,9 +87,7 @@ const nextConfig: NextConfig = {
         loaders: [
           {
             loader: "swc-plugin-svg-component/turbopack",
-            options: {
-              icon: true,
-            },
+            options: {},
           },
         ],
         as: '*.js',

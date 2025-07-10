@@ -14,7 +14,8 @@
   "main": "./dist/swc_plugin_svg_component.wasm",
   "files": [
     "./dist/swc_plugin_svg_component.wasm",
-    "./turbopack.js"
+    "./turbopack.js",
+    "./vite.js"
   ],
   "publishConfig": {
     "access": "public"
@@ -27,6 +28,6 @@
     "dist": "node ./scripts/dist.js"
   },
   "dependencies": {
-    "@swc/core": "^1.12.9"
+    "@swc/core": "^1.12.11"
   }
 }

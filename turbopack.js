@@ -1,32 +1,7 @@
-const path = require("node:path");
 const { transform } = require("@swc/core");
+const swcConfig = require("./swcrc");
 
-const defaultSwcConfig = {
-    module: {
-        type: "es6"
-    },
-    jsc: {
-        parser: {
-            syntax: "ecmascript",
-            jsx: true,
-        },
-        transform: {
-            react: {
-                runtime: "automatic",
-                importSource: "react"
-            }
-        },
-        loose: false,
-        externalHelpers: false,
-        experimental: {
-            plugins: [
-                [path.resolve(__dirname, "dist/swc_plugin_svg_component.wasm"), {}]
-            ]
-        }
-    }
-};
-
-module.exports = function svgrLoader(contents) {
+module.exports = function svgComponentLoader(contents) {
     const callback = this.async()
 
     const previousExport = (() => {
@@ -36,7 +11,7 @@ module.exports = function svgrLoader(contents) {
     })()
 
     if (!previousExport) {
-        transform(contents, defaultSwcConfig)
+        transform(contents, swcConfig)
             .then((content) => callback(null, content.code))
     } else {
         this.fs.readFile(this.resourcePath, (err, result) => {
@@ -44,7 +19,7 @@ module.exports = function svgrLoader(contents) {
                 callback(err)
                 return
             }
-            transform(String(result), defaultSwcConfig)
+            transform(String(result), swcConfig)
                 .then((content) => callback(null, content.code))
                 .catch(callback)
         })
