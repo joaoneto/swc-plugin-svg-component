@@ -1,7 +1,7 @@
 /// <reference types="node" />
 
 import type { Plugin as VitePlugin } from "vite";
-import type { Config as SwcConfig, TransformOutput } from "@swc/core";
+import type { Config as SwcConfig } from "@swc/core";
 
 export interface SvgComponentLoaderOptions extends SwcConfig {}
 

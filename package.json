@@ -18,13 +18,14 @@
     "./dist/swc_plugin_svg_component.wasm",
     "./turbopack.js",
     "./vite.js",
-    "./swcrc.js",
-    "./types.d.ts"
+    "./vite.d.ts",
+    "./swcrc.js"
   ],
   "exports": {
     "./vite": {
       "types": "./vite.d.ts",
-      "require": "./vite.js"
+      "require": "./vite.js",
+      "import": "./vite.js"
     },
     "./turbopack": "./turbopack.js"
   },
