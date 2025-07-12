@@ -1,6 +1,6 @@
 {
   "name": "swc-plugin-svg-component",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "João Neto <joaopintoneto@gmail.com>",
   "license": "MIT",
   "description": "SWC plugin for svg react component",
