@@ -4,6 +4,8 @@
   "author": "João Neto <joaopintoneto@gmail.com>",
   "license": "MIT",
   "description": "SWC plugin for svg react component",
+  "homepage": "https://github.com/joaoneto/swc-plugin-svg-component#readme",
+  "repository": "github:joaoneto/swc-plugin-svg-component",
   "keywords": [
     "swc",
     "svg",
@@ -15,8 +17,17 @@
   "files": [
     "./dist/swc_plugin_svg_component.wasm",
     "./turbopack.js",
-    "./vite.js"
+    "./vite.js",
+    "./swcrc.js",
+    "./types.d.ts"
   ],
+  "exports": {
+    "./vite": {
+      "types": "./vite.d.ts",
+      "require": "./vite.js"
+    },
+    "./turbopack": "./turbopack.js"
+  },
   "publishConfig": {
     "access": "public"
   },

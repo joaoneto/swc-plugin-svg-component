@@ -1,12 +1,8 @@
 const fs = require("node:fs/promises");
-const path = require("node:path");
 const { transform } = require("@swc/core");
-const swcConfig = require("./swcrc");
+const { mergeConfig } = require("./swcrc");
 
-/**
- * @returns {import("vite").Plugin}
- */
-module.exports = function svgComponentLoader() {
+module.exports = function svgComponentLoader(options = {}) {
   return {
     name: "swc-plugin-svg-component",
     enforce: "pre",
@@ -15,10 +11,7 @@ module.exports = function svgComponentLoader() {
 
       const svgContent = await fs.readFile(id, "utf-8");
 
-      const result = await transform(svgContent, {
-        ...swcConfig,
-        filename: path.basename(id)
-      });
+      const result = await transform(svgContent, mergeConfig(options, id));
 
       return {
         code: result.code,

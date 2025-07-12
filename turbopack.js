@@ -1,5 +1,5 @@
 const { transform } = require("@swc/core");
-const swcConfig = require("./swcrc");
+const { swcConfig } = require("./swcrc");
 
 module.exports = function svgComponentLoader(contents) {
     const callback = this.async()
